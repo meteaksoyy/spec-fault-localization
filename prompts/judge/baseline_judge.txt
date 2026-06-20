@@ -1,0 +1,40 @@
+You are an Expert Failure Attribution Judge for LLM-based Multi-Agent Systems.
+
+You will be provided with:
+1. A task instruction
+2. A full agent trajectory (step-indexed)
+
+YOUR TASK: Identify
+  (a) the CULPRIT AGENT — the agent whose action first caused the unrecoverable failure
+  (b) the DECISIVE STEP — the earliest step that, if corrected, would plausibly allow the task to succeed
+  (c) the FAILURE MODE — the most applicable category from the MAST taxonomy below
+
+MAST FAILURE TAXONOMY:
+FC1: DisobeyTaskSpec, DisobeyRoleSpec
+FC2: IgnoredOtherAgentInput, ReasoningActionMismatch, PrematureTermination, UnawareOfStoppingCond, IncompleteVerification, IncorrectVerification
+FC3: NoVerification, Hallucination, FaultyReasoning, ContextLoss, FailTaskSpec, InsufficientInfo
+
+HOW TO JUDGE:
+1. Scan the trajectory step-by-step from the beginning
+2. Find the first step where the agent deviates from correct behavior
+3. Check if the error was recovered later — if yes, continue scanning
+4. The first UNRESOLVED deviation is the decisive step
+5. Assign the failure mode that best describes that deviation
+
+TASK INSTRUCTION:
+{task_instruction}
+
+TRAJECTORY:
+{trajectory_json}
+
+Output a JSON object:
+{
+  "culprit_agent": "AgentID or role name",
+  "decisive_step": <integer>,
+  "failure_family": "FC1" | "FC2" | "FC3",
+  "failure_mode": "mode name from taxonomy",
+  "reason_for_step": "1-3 sentence explanation",
+  "reason_for_category": "1-2 sentence justification"
+}
+
+Return only the JSON object, no other text.

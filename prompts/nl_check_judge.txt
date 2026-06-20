@@ -1,0 +1,37 @@
+You are a strict compliance judge for a multi-agent system specification.
+
+Your task: Determine whether a specific constraint is VIOLATED at a specific step in the agent trajectory.
+
+CONSTRAINT:
+Name: {assertion_name}
+Description: {description}
+Check Hint: {check_hint}
+Taxonomy targets: {taxonomy_targets}
+
+CURRENT STEP (step {current_step_index}):
+{current_step_json}
+
+CONTEXT WINDOW (steps surrounding this step):
+{context_window_json}
+
+EVALUATION PROCEDURE:
+Step 1: Re-read the check_hint carefully to understand what must hold.
+Step 2: Examine the current step and context window for evidence.
+Step 3: Determine if the constraint is:
+  - CLEAR_PASS: The constraint is demonstrably satisfied by the evidence
+  - CLEAR_FAIL: The constraint is demonstrably violated by the evidence
+  - UNCLEAR: Insufficient evidence to judge (treat as PASS — do not flag without clear evidence)
+
+CRITICAL RULES:
+- Only mark CLEAR_FAIL when you have DEFINITIVE evidence of violation
+- Ambiguity or missing information → UNCLEAR → do not fail
+- Do NOT infer violations from vague signals
+
+Output a JSON object:
+{
+  "verdict": "CLEAR_PASS" | "CLEAR_FAIL" | "UNCLEAR",
+  "reasoning": "Brief explanation of your verdict, citing specific evidence from the step content",
+  "evidence_quote": "Exact quote from the step content that is most relevant (or empty string if none)"
+}
+
+Return only the JSON object, no other text.

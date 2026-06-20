@@ -1,0 +1,667 @@
+{
+  "global_only": {
+    "mode": "global_only",
+    "metrics": {
+      "n_traces": 18,
+      "agent_accuracy": NaN,
+      "step_accuracy": NaN,
+      "avg_step_distance": NaN,
+      "failure_mode_accuracy": 0.05555555555555555,
+      "failure_mode_accuracy_lenient": 0.05555555555555555,
+      "failure_family_accuracy": 0.2777777777777778,
+      "failure_family_accuracy_lenient": 0.5,
+      "step_accuracy_at_1": 0.0,
+      "step_accuracy_at_3": 0.0,
+      "step_accuracy_at_5": 0.0,
+      "skipped": 1,
+      "errors": 0
+    },
+    "predictions": [
+      {
+        "culprit_agent": "Supervisor",
+        "decisive_step": 5,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 5, the Supervisor agent incorrectly assumed that retrieving account credentials would provide the Spotify access token, which was a logical error in reasoning about how to obtain the necessary token.",
+        "reason_for_category": "The failure mode is FaultyReasoning because the agent's reasoning process contained a logical error in assuming the password was the access token.",
+        "supporting_violation_steps": [
+          5
+        ],
+        "_trajectory_id": "appworld_0"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 7,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 7, the Planner incorrectly concludes that the separability matrix for the nested compound model is incorrect, despite the Executor's output confirming the issue. This misinterpretation leads to further incorrect actions.",
+        "reason_for_category": "The Planner's reasoning process contains a logical error in interpreting the Executor's output, leading to incorrect conclusions about the separability matrix.",
+        "supporting_violation_steps": [
+          7
+        ],
+        "_trajectory_id": "hyperagent_1"
+      },
+      {
+        "culprit_agent": "mathproxyagent",
+        "decisive_step": 2,
+        "failure_family": "FC3",
+        "failure_mode": "ContextLoss",
+        "reason_for_step": "At step 2, the mathproxyagent failed to recognize the assistant's request for more information and continued to prompt for problem-solving without addressing the missing data issue.",
+        "reason_for_category": "The failure mode is ContextLoss because the agent ignored the context established by the assistant's request for additional information, leading to an inability to progress.",
+        "supporting_violation_steps": [
+          2
+        ],
+        "_trajectory_id": "ag2_2"
+      },
+      {
+        "culprit_agent": "Chief Product Officer",
+        "decisive_step": 3,
+        "failure_family": "FC1",
+        "failure_mode": "DisobeyTaskSpec",
+        "reason_for_step": "At step 3, the Chief Product Officer acted without obtaining the necessary final approval from the Chief Executive Officer, violating the protocol that requires CEO's final decision-making on key policy issues.",
+        "reason_for_category": "The failure mode is DisobeyTaskSpec because the Chief Product Officer violated a specific task requirement that the CEO must give final approval.",
+        "supporting_violation_steps": [
+          3,
+          4
+        ],
+        "_trajectory_id": "chatdev_3"
+      },
+      {
+        "culprit_agent": "Bob(SimpleTester)",
+        "decisive_step": 3,
+        "failure_family": "FC2",
+        "failure_mode": "IgnoredOtherAgentInput",
+        "reason_for_step": "At step 3, Bob added a new test case for mixed case palindromes without addressing the existing issue of test coverage for new features, as indicated by the violation log.",
+        "reason_for_category": "Bob ignored the need for comprehensive test coverage, which was highlighted in the violation log, indicating a failure to incorporate necessary input.",
+        "supporting_violation_steps": [
+          3
+        ],
+        "_trajectory_id": "metagpt_4"
+      },
+      {
+        "culprit_agent": "Supervisor",
+        "decisive_step": 8,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 8, the Supervisor agent incorrectly sends the Spotify password instead of the required access token, which leads to a failure in authenticating with the Spotify API. This action deviates from the expected task execution and causes a delay in task completion.",
+        "reason_for_category": "The failure mode is FaultyReasoning because the agent's reasoning process contained an error in understanding the correct authentication method, leading to an incorrect action.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "appworld_5"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 3,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 3, the Planner incorrectly concluded that the issue was due to the `_iter` method skipping transformers with empty column selections, leading to a mismatch in feature names. This reasoning was incorrect as the actual problem was not identified correctly.",
+        "reason_for_category": "The Planner's reasoning contained a logical error in diagnosing the problem, which fits the FaultyReasoning mode.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_6"
+      },
+      {
+        "culprit_agent": "mathproxyagent",
+        "decisive_step": 2,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 2, the mathproxyagent outputs '29.0' as the number of students, which is incorrect based on the problem's logic. The calculation did not correctly account for the cards Jane refused, leading to an incorrect final answer.",
+        "reason_for_category": "The agent's reasoning process contained a logical error in calculating the number of students, which fits the definition of FaultyReasoning.",
+        "supporting_violation_steps": [
+          2
+        ],
+        "_trajectory_id": "ag2_7"
+      },
+      {
+        "culprit_agent": "Chief Executive Officer",
+        "decisive_step": 4,
+        "failure_family": "FC1",
+        "failure_mode": "DisobeyTaskSpec",
+        "reason_for_step": "At step 4, the Chief Executive Officer failed to ensure that the Chief Product Officer validated the product requirements before the development process began, violating the explicit task requirement to confirm when the puzzle is completed.",
+        "reason_for_category": "The failure mode is DisobeyTaskSpec because the agent ignored a specific task requirement to validate product requirements before proceeding.",
+        "supporting_violation_steps": [
+          4
+        ],
+        "_trajectory_id": "chatdev_8"
+      },
+      {
+        "culprit_agent": "Alice(SimpleCoder)",
+        "decisive_step": 0,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "In step 0, Alice(SimpleCoder) implemented the BudgetTracker class but omitted the get_income method, which is required for the tests written by Bob(SimpleTester) to pass. This omission led to the failure of the test_add_income test case.",
+        "reason_for_category": "The failure mode is FaultyReasoning because the agent's reasoning process contained an oversight in implementing the necessary methods for the task, leading to a logical error.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "metagpt_9"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 3,
+        "failure_family": "FC2",
+        "failure_mode": "ReasoningActionMismatch",
+        "reason_for_step": "The Planner identified the issue with case-sensitive command parsing but failed to implement a case-insensitive solution, leading to an unrecoverable state.",
+        "reason_for_category": "The Planner identified the issue with case-sensitive command parsing but failed to implement a case-insensitive solution, leading to an unrecoverable state. This mismatch between reasoning and action resulted in the failure to resolve the problem.",
+        "supporting_violation_steps": [
+          3,
+          4
+        ],
+        "_trajectory_id": "hyperagent_10"
+      },
+      {
+        "culprit_agent": "send_message API",
+        "decisive_step": 30,
+        "failure_family": "FC3",
+        "failure_mode": "ContextLoss",
+        "reason_for_step": "At step 30, the send_message API agent misinterpreted the tool output by failing to recognize that the notes listed did not include the 'Bucket List' note, leading to an incorrect assumption about the task's progress.",
+        "reason_for_category": "The failure mode is ContextLoss because the agent lost track of the context established earlier, specifically the need to identify and mark the 'Bucket List' note as done.",
+        "supporting_violation_steps": [
+          30
+        ],
+        "_trajectory_id": "appworld_11"
+      },
+      {
+        "culprit_agent": "assistant",
+        "decisive_step": 5,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 5, the assistant incorrectly calculates the number of days the chalk will last, leading to the conclusion that the teacher has 0 days left, which is incorrect given the task constraints.",
+        "reason_for_category": "The failure mode is FaultyReasoning because the assistant's reasoning process contains a logical error in calculating the days remaining, despite having the correct setup for the problem.",
+        "supporting_violation_steps": [
+          5
+        ],
+        "_trajectory_id": "ag2_12"
+      },
+      {
+        "culprit_agent": "System",
+        "decisive_step": 1,
+        "failure_family": "FC2",
+        "failure_mode": "ReasoningActionMismatch",
+        "reason_for_step": "The earliest violation occurred at step 1, where the System failed to validate word entries and confirm completion, making the task unrecoverable from this point.",
+        "reason_for_category": "The system failed to validate word entries and confirm completion, leading to a mismatch between the expected reasoning and the actions taken. This resulted in an unrecoverable state from the first step.",
+        "supporting_violation_steps": [
+          1,
+          1,
+          1,
+          5
+        ],
+        "_trajectory_id": "chatdev_13"
+      },
+      {
+        "culprit_agent": "Alice(SimpleCoder)",
+        "decisive_step": 0,
+        "failure_family": "FC1",
+        "failure_mode": "DisobeyTaskSpec",
+        "reason_for_step": "Alice started coding before Bob, violating the protocol constraint that Alice must complete before Bob starts. This led to a cascade of protocol violations and misalignments.",
+        "reason_for_category": "Alice explicitly ignored a stated protocol constraint, which is a clear case of DisobeyTaskSpec.",
+        "supporting_violation_steps": [
+          0,
+          1,
+          2
+        ],
+        "_trajectory_id": "metagpt_14"
+      },
+      {
+        "culprit_agent": "System",
+        "decisive_step": 1,
+        "failure_family": "FC1",
+        "failure_mode": "DisobeyTaskSpec",
+        "reason_for_step": "The task_prompt_consistency violation at step 1 indicates a misinterpretation of the task, leading to context loss and making the task unrecoverable from this point.",
+        "reason_for_category": "The system failed to maintain task prompt consistency, leading to a misinterpretation of the task and context loss, which made the task unrecoverable from the first step.",
+        "supporting_violation_steps": [
+          1,
+          2
+        ],
+        "_trajectory_id": "chatdev_15"
+      },
+      {
+        "culprit_agent": "SimpleTester",
+        "decisive_step": 2,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 2, SimpleTester incorrectly asserts that strC < strB, which contradicts the alphabetical order rule that uppercase letters precede lowercase letters. This logical error leads to an incorrect test result.",
+        "reason_for_category": "The failure mode is FaultyReasoning because the agent's reasoning process contains a logical error regarding string comparison, which is not due to a specific rule violation or lack of verification.",
+        "supporting_violation_steps": [
+          2
+        ],
+        "_trajectory_id": "metagpt_16"
+      },
+      {
+        "culprit_agent": "WebSurfer",
+        "decisive_step": 9,
+        "failure_family": "FC3",
+        "failure_mode": "ContextLoss",
+        "reason_for_step": "At step 9, WebSurfer failed to progress in finding the required information despite being on the correct page, leading to a delay in task completion. This step was decisive as it was the first point where the task could not recover efficiently.",
+        "reason_for_category": "The failure mode is ContextLoss because the agent did not effectively utilize the context of being on the correct webpage to find the necessary information.",
+        "supporting_violation_steps": [
+          9
+        ],
+        "_trajectory_id": "gaia_17"
+      }
+    ],
+    "ground_truths": [
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.2 Step repetition",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.4 Conversation reset",
+            "mode": "ContextLoss",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.5 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.6 Disobey role specification",
+            "mode": "DisobeyRoleSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.4 Waiting for known information",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "4.3 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "4.2 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.2 Step repetition",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.4 Conversation reset",
+            "mode": "ContextLoss",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.5 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.6 Disobey role specification",
+            "mode": "DisobeyRoleSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.4 Waiting for known information",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "4.3 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "4.2 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.6 Backtracking interruption",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.6 Backtracking interruption",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Poor task constraint compliance",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.3 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Poor task constraint compliance",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.3 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Poor task constraint compliance",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.3 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "InsufficientInfo",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.2 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "InsufficientInfo",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.2 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Disobey Task Specification",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.2 No or Incomplete Verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Incorrect Verification",
+            "mode": "IncorrectVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Disobey Task Specification",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.2 No or Incomplete Verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Incorrect Verification",
+            "mode": "IncorrectVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Disobey Task Specification",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.2 No or Incomplete Verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Incorrect Verification",
+            "mode": "IncorrectVerification",
+            "family": "FC2"
+          }
+        ]
+      }
+    ],
+    "errors": []
+  }
+}

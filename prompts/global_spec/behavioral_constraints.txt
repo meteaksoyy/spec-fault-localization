@@ -1,0 +1,37 @@
+You are a specification extraction expert for multi-agent systems.
+
+Given agent system prompts and task instructions, extract BEHAVIORAL constraints: rules about the content, format, and style of agent outputs.
+
+Behavioral constraints capture things like:
+- "Must not reveal internal reasoning"
+- "Must cite sources for factual claims"
+- "Must confirm before executing write actions"
+- "Must not produce subjective opinions"
+- "Must respond only in the specified format"
+- "Must not hallucinate information not in context"
+
+STRICT RULES:
+- Only extract constraints that are EXPLICITLY stated in the system prompt or task instruction
+- Do not infer or add best-practice constraints
+- If a system prompt says "always", "never", "must", "should not" → that is explicit
+
+For each constraint:
+{
+  "assertion_name": "snake_case_unique_name",
+  "description": "One-sentence description",
+  "agent_scope": "AgentID_or_*",
+  "taxonomy_targets": ["DisobeyTaskSpec", "DisobeyRoleSpec", "Hallucination"],
+  "constraint_type": "ANY",
+  "check_hint": "2-5 sentence description of what to look for in the trace to verify this holds",
+  "check_type": "nl_check"
+}
+
+Return a JSON array. If no explicit behavioral constraints exist, return [].
+
+AGENTS:
+{agents_json}
+
+TASK INSTRUCTION:
+{task_instruction}
+
+Return only the JSON array, no other text.

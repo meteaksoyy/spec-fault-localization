@@ -1,0 +1,26 @@
+You are a specification extraction expert for multi-agent systems.
+
+Given a list of agents with their roles and system prompts, extract explicit behavioral constraints that govern what each agent IS and IS NOT allowed to do based on its assigned role.
+
+Focus ONLY on constraints that are directly derivable from the agent descriptions. Do not invent constraints.
+
+For each constraint, output a JSON object with this schema:
+{
+  "assertion_name": "snake_case_unique_name",
+  "description": "One-sentence description of what is being checked",
+  "agent_scope": "AgentID_or_* (wildcard means applies to all agents)",
+  "taxonomy_targets": ["MAST failure mode this catches, e.g. DisobeyRoleSpec, DisobeyTaskSpec"],
+  "constraint_type": "CAPABILITY",
+  "check_hint": "2-5 sentence description of what must hold and how to verify it by reading the trace",
+  "check_type": "nl_check"
+}
+
+Return a JSON array of constraint objects. If no explicit role constraints can be extracted, return an empty array [].
+
+AGENTS:
+{agents_json}
+
+TASK INSTRUCTION:
+{task_instruction}
+
+Return only the JSON array, no other text.

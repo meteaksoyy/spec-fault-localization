@@ -1,0 +1,722 @@
+{
+  "full": {
+    "mode": "full",
+    "metrics": {
+      "n_traces": 18,
+      "agent_accuracy": NaN,
+      "step_accuracy": NaN,
+      "avg_step_distance": NaN,
+      "failure_mode_accuracy": 0.0,
+      "failure_mode_accuracy_lenient": 0.05555555555555555,
+      "failure_family_accuracy": 0.16666666666666666,
+      "failure_family_accuracy_lenient": 0.2777777777777778,
+      "step_accuracy_at_1": 0.0,
+      "step_accuracy_at_3": 0.0,
+      "step_accuracy_at_5": 0.0,
+      "skipped": 1,
+      "errors": 7
+    },
+    "predictions": [
+      {
+        "culprit_agent": "Supervisor",
+        "decisive_step": 11,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 11, the Supervisor agent incorrectly decided to use the Spotify password as an access token, despite previous indications that this was incorrect. This decision led to an unrecoverable failure in retrieving the playlists.",
+        "reason_for_category": "The failure was due to a logical error in reasoning about how to obtain and use the access token, rather than a violation of a specific task constraint or inter-agent misalignment.",
+        "supporting_violation_steps": [
+          11,
+          21,
+          22
+        ],
+        "_trajectory_id": "appworld_0"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 5,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 5, the Planner incorrectly identifies the main issue as a lack of handling for nested compound models without sufficient evidence, leading to a flawed analysis of the `_separable` function.",
+        "reason_for_category": "The Planner's reasoning process contains a logical error in diagnosing the problem with the separability matrix, which is not supported by the evidence provided.",
+        "supporting_violation_steps": [
+          5,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "_trajectory_id": "hyperagent_1"
+      },
+      {
+        "culprit_agent": "mathproxyagent",
+        "decisive_step": 2,
+        "failure_family": "FC3",
+        "failure_mode": "InsufficientInfo",
+        "reason_for_step": "At step 2, mathproxyagent failed to recognize that the problem was unsolvable due to missing information about the ribbon length or bow size, which was crucial for solving the task.",
+        "reason_for_category": "The task could not be completed because essential information was not provided, making it a case of InsufficientInfo.",
+        "supporting_violation_steps": [
+          2,
+          4,
+          6,
+          8,
+          12
+        ],
+        "_trajectory_id": "ag2_2"
+      },
+      {
+        "culprit_agent": "Chief Executive Officer",
+        "decisive_step": 2,
+        "failure_family": "FC2",
+        "failure_mode": "IgnoredOtherAgentInput",
+        "reason_for_step": "At step 2, the Chief Executive Officer failed to ensure that the Chief Product Officer facilitated user input and mistake checking, as there were no tool calls or results indicating these features were implemented.",
+        "reason_for_category": "The failure mode is IgnoredOtherAgentInput because the Chief Executive Officer did not incorporate necessary input from the Chief Product Officer regarding user input and mistake checking.",
+        "supporting_violation_steps": [
+          5,
+          6
+        ],
+        "_trajectory_id": "chatdev_3"
+      },
+      {
+        "culprit_agent": "Alice(SimpleCoder)",
+        "decisive_step": 0,
+        "failure_family": "FC3",
+        "failure_mode": "ContextLoss",
+        "reason_for_step": "At step 0, Alice's code does not handle file path consistency, leading to a mismatch with the test cases that expect specific file paths like 'empty.txt'. This inconsistency is the earliest point of failure.",
+        "reason_for_category": "The failure mode is ContextLoss because Alice's code does not maintain consistency with the expected file paths, leading to a disconnect between the code and the test cases.",
+        "supporting_violation_steps": [
+          0
+        ],
+        "_trajectory_id": "metagpt_4"
+      },
+      {
+        "culprit_agent": "Supervisor",
+        "decisive_step": 8,
+        "failure_family": "FC2",
+        "failure_mode": "IgnoredOtherAgentInput",
+        "reason_for_step": "At step 8, the Supervisor agent sends the Spotify password instead of the access token, despite the Spotify agent's response at step 10 clearly stating that the access token is needed. This indicates a failure to incorporate the input from the Spotify agent.",
+        "reason_for_category": "The failure mode is IgnoredOtherAgentInput because the Supervisor agent did not act on the input provided by the Spotify agent, which specified the need for an access token.",
+        "supporting_violation_steps": [
+          9,
+          10,
+          12
+        ],
+        "_trajectory_id": "appworld_5"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 3,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 3, the Planner incorrectly identified the `_iter` method as the source of the issue without considering the broader context of the ColumnTransformer's interaction with pandas output. This misinterpretation led to an incorrect modification plan.",
+        "reason_for_category": "The Planner's reasoning process contained a logical error in identifying the root cause of the problem, which fits the definition of FaultyReasoning.",
+        "supporting_violation_steps": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "_trajectory_id": "hyperagent_6"
+      },
+      {
+        "culprit_agent": "mathproxyagent",
+        "decisive_step": 2,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 2, the mathproxyagent incorrectly calculated the number of students as 29.0, which indicates a reasoning error in the division step for student count calculation.",
+        "reason_for_category": "The failure mode is FaultyReasoning because the agent's calculation logic was incorrect, leading to an incorrect final answer.",
+        "supporting_violation_steps": [
+          3,
+          4,
+          5
+        ],
+        "_trajectory_id": "ag2_7"
+      },
+      {
+        "culprit_agent": "Chief Product Officer",
+        "decisive_step": 3,
+        "failure_family": "FC1",
+        "failure_mode": "DisobeyTaskSpec",
+        "reason_for_step": "At step 3, the Chief Product Officer failed to ensure the program could check for mistakes in player inputs, violating a specific task requirement stated in the task instruction.",
+        "reason_for_category": "The failure mode is DisobeyTaskSpec because the agent ignored an explicit task requirement to implement mistake-checking functionality.",
+        "supporting_violation_steps": [
+          3
+        ],
+        "_trajectory_id": "chatdev_8"
+      },
+      {
+        "culprit_agent": "Bob(SimpleTester)",
+        "decisive_step": 1,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 1, Bob wrote a test for add_income that incorrectly asserts bt.get_income() == 1000, despite the BudgetTracker class not having a get_income method. This indicates a misunderstanding of the class's implementation.",
+        "reason_for_category": "The failure mode is FaultyReasoning because Bob's test logic is flawed, leading to incorrect assumptions about the class's functionality.",
+        "supporting_violation_steps": [
+          1,
+          2
+        ],
+        "_trajectory_id": "metagpt_9"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 3,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Planner incorrectly identified the issue as being solely due to case-sensitive regular expressions in the `_line_type` function, leading to a series of missteps and misunderstandings about the necessary changes to resolve the problem.",
+        "reason_for_category": "The Planner incorrectly identified the issue as solely due to case-sensitive regular expressions, leading to a series of missteps and misunderstandings about the necessary changes to resolve the problem. This resulted in a failure to properly address the root cause of the issue.",
+        "supporting_violation_steps": [
+          1,
+          3,
+          3,
+          3,
+          4,
+          4,
+          6,
+          7,
+          7,
+          7,
+          8,
+          8,
+          9,
+          10,
+          11,
+          11,
+          11,
+          12,
+          13,
+          13,
+          13,
+          14,
+          15,
+          16,
+          16,
+          17,
+          19,
+          19,
+          19,
+          19
+        ],
+        "_trajectory_id": "hyperagent_10"
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "",
+        "failure_family": "",
+        "_trajectory_id": "appworld_11"
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "",
+        "failure_family": "",
+        "_trajectory_id": "ag2_12"
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "",
+        "failure_family": "",
+        "_trajectory_id": "chatdev_13"
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "",
+        "failure_family": "",
+        "_trajectory_id": "metagpt_14"
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "",
+        "failure_family": "",
+        "_trajectory_id": "chatdev_15"
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "",
+        "failure_family": "",
+        "_trajectory_id": "metagpt_16"
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "",
+        "failure_family": "",
+        "_trajectory_id": "gaia_17"
+      }
+    ],
+    "ground_truths": [
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.2 Step repetition",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.4 Conversation reset",
+            "mode": "ContextLoss",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.5 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.6 Disobey role specification",
+            "mode": "DisobeyRoleSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.4 Waiting for known information",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "4.3 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "4.2 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.2 Step repetition",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.4 Conversation reset",
+            "mode": "ContextLoss",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.5 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.6 Disobey role specification",
+            "mode": "DisobeyRoleSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.4 Waiting for known information",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "4.3 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "4.2 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.6 Backtracking interruption",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.6 Backtracking interruption",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Poor task constraint compliance",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.3 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Poor task constraint compliance",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.3 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Poor task constraint compliance",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.3 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "InsufficientInfo",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.2 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "InsufficientInfo",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.2 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Disobey Task Specification",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.2 No or Incomplete Verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Incorrect Verification",
+            "mode": "IncorrectVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Disobey Task Specification",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.2 No or Incomplete Verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Incorrect Verification",
+            "mode": "IncorrectVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Disobey Task Specification",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.2 No or Incomplete Verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Incorrect Verification",
+            "mode": "IncorrectVerification",
+            "family": "FC2"
+          }
+        ]
+      }
+    ],
+    "errors": [
+      {
+        "index": 11,
+        "stage": "pipeline",
+        "error": "Connection error.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 101, in handle_request\n    raise exc\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 78, in handle_request\n    stream = self._connect(request)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 124, in _connect\n    stream = self._network_backend.connect_tcp(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 207, in connect_tcp\n    with map_exceptions(exc_map):\n         ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1037, in request\n    response = self._send_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 440, in _send_request\n    return self._send_with_auth_retry(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 418, in _send_with_auth_retry\n    response = super()._send_request(request, stream=stream, **kwargs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 964, in _send_request\n    return self._client.send(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 916, in send\n    response = self._send_handling_auth(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 944, in _send_handling_auth\n    response = self._send_handling_redirects(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 981, in _send_handling_redirects\n    response = self._send_single_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 1016, in _send_single_request\n    response = transport.handle_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 211, in evaluate\n    pred = run_full_pipeline(ir, dynamic=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 108, in run_full_pipeline\n    validation_log = build_validation_log(ir, global_constraints, verbose=False)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\validation_log.py\", line 85, in build_validation_log\n    results = evaluate_all_at_step(c_k, trajectory, k)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\constraint_evaluator.py\", line 271, in evaluate_all_at_step\n    verdict, evidence = evaluate_constraint(c, trajectory, step_index)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\constraint_evaluator.py\", line 248, in evaluate_constraint\n    verdict, evidence = _run_nl_check(constraint, trajectory, step_index)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\constraint_evaluator.py\", line 194, in _run_nl_check\n    resp = client.chat.completions.create(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1215, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1332, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1072, in request\n    raise APIConnectionError(request=request) from err\nopenai.APIConnectionError: Connection error.\n"
+      },
+      {
+        "index": 12,
+        "stage": "pipeline",
+        "error": "Connection error.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 101, in handle_request\n    raise exc\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 78, in handle_request\n    stream = self._connect(request)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 124, in _connect\n    stream = self._network_backend.connect_tcp(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 207, in connect_tcp\n    with map_exceptions(exc_map):\n         ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1037, in request\n    response = self._send_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 440, in _send_request\n    return self._send_with_auth_retry(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 418, in _send_with_auth_retry\n    response = super()._send_request(request, stream=stream, **kwargs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 964, in _send_request\n    return self._client.send(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 916, in send\n    response = self._send_handling_auth(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 944, in _send_handling_auth\n    response = self._send_handling_redirects(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 981, in _send_handling_redirects\n    response = self._send_single_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 1016, in _send_single_request\n    response = transport.handle_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 211, in evaluate\n    pred = run_full_pipeline(ir, dynamic=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 104, in run_full_pipeline\n    global_constraints = extract_global_specs(ir)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 235, in extract_global_specs\n    all_constraints += _extract_role_constraints(agents, task)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 85, in _extract_role_constraints\n    raw = _call_llm(system, prompt)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 42, in _call_llm\n    resp = client.chat.completions.create(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1215, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1332, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1072, in request\n    raise APIConnectionError(request=request) from err\nopenai.APIConnectionError: Connection error.\n"
+      },
+      {
+        "index": 13,
+        "stage": "pipeline",
+        "error": "Connection error.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 101, in handle_request\n    raise exc\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 78, in handle_request\n    stream = self._connect(request)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 124, in _connect\n    stream = self._network_backend.connect_tcp(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 207, in connect_tcp\n    with map_exceptions(exc_map):\n         ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1037, in request\n    response = self._send_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 440, in _send_request\n    return self._send_with_auth_retry(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 418, in _send_with_auth_retry\n    response = super()._send_request(request, stream=stream, **kwargs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 964, in _send_request\n    return self._client.send(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 916, in send\n    response = self._send_handling_auth(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 944, in _send_handling_auth\n    response = self._send_handling_redirects(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 981, in _send_handling_redirects\n    response = self._send_single_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 1016, in _send_single_request\n    response = transport.handle_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 211, in evaluate\n    pred = run_full_pipeline(ir, dynamic=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 104, in run_full_pipeline\n    global_constraints = extract_global_specs(ir)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 235, in extract_global_specs\n    all_constraints += _extract_role_constraints(agents, task)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 85, in _extract_role_constraints\n    raw = _call_llm(system, prompt)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 42, in _call_llm\n    resp = client.chat.completions.create(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1215, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1332, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1072, in request\n    raise APIConnectionError(request=request) from err\nopenai.APIConnectionError: Connection error.\n"
+      },
+      {
+        "index": 14,
+        "stage": "pipeline",
+        "error": "Connection error.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 101, in handle_request\n    raise exc\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 78, in handle_request\n    stream = self._connect(request)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 124, in _connect\n    stream = self._network_backend.connect_tcp(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 207, in connect_tcp\n    with map_exceptions(exc_map):\n         ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1037, in request\n    response = self._send_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 440, in _send_request\n    return self._send_with_auth_retry(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 418, in _send_with_auth_retry\n    response = super()._send_request(request, stream=stream, **kwargs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 964, in _send_request\n    return self._client.send(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 916, in send\n    response = self._send_handling_auth(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 944, in _send_handling_auth\n    response = self._send_handling_redirects(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 981, in _send_handling_redirects\n    response = self._send_single_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 1016, in _send_single_request\n    response = transport.handle_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 211, in evaluate\n    pred = run_full_pipeline(ir, dynamic=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 104, in run_full_pipeline\n    global_constraints = extract_global_specs(ir)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 235, in extract_global_specs\n    all_constraints += _extract_role_constraints(agents, task)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 85, in _extract_role_constraints\n    raw = _call_llm(system, prompt)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 42, in _call_llm\n    resp = client.chat.completions.create(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1215, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1332, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1072, in request\n    raise APIConnectionError(request=request) from err\nopenai.APIConnectionError: Connection error.\n"
+      },
+      {
+        "index": 15,
+        "stage": "pipeline",
+        "error": "Connection error.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 101, in handle_request\n    raise exc\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 78, in handle_request\n    stream = self._connect(request)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 124, in _connect\n    stream = self._network_backend.connect_tcp(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 207, in connect_tcp\n    with map_exceptions(exc_map):\n         ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1037, in request\n    response = self._send_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 440, in _send_request\n    return self._send_with_auth_retry(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 418, in _send_with_auth_retry\n    response = super()._send_request(request, stream=stream, **kwargs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 964, in _send_request\n    return self._client.send(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 916, in send\n    response = self._send_handling_auth(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 944, in _send_handling_auth\n    response = self._send_handling_redirects(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 981, in _send_handling_redirects\n    response = self._send_single_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 1016, in _send_single_request\n    response = transport.handle_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 211, in evaluate\n    pred = run_full_pipeline(ir, dynamic=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 104, in run_full_pipeline\n    global_constraints = extract_global_specs(ir)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 235, in extract_global_specs\n    all_constraints += _extract_role_constraints(agents, task)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 85, in _extract_role_constraints\n    raw = _call_llm(system, prompt)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 42, in _call_llm\n    resp = client.chat.completions.create(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1215, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1332, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1072, in request\n    raise APIConnectionError(request=request) from err\nopenai.APIConnectionError: Connection error.\n"
+      },
+      {
+        "index": 16,
+        "stage": "pipeline",
+        "error": "Connection error.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 101, in handle_request\n    raise exc\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 78, in handle_request\n    stream = self._connect(request)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 124, in _connect\n    stream = self._network_backend.connect_tcp(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 207, in connect_tcp\n    with map_exceptions(exc_map):\n         ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1037, in request\n    response = self._send_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 440, in _send_request\n    return self._send_with_auth_retry(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 418, in _send_with_auth_retry\n    response = super()._send_request(request, stream=stream, **kwargs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 964, in _send_request\n    return self._client.send(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 916, in send\n    response = self._send_handling_auth(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 944, in _send_handling_auth\n    response = self._send_handling_redirects(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 981, in _send_handling_redirects\n    response = self._send_single_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 1016, in _send_single_request\n    response = transport.handle_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 211, in evaluate\n    pred = run_full_pipeline(ir, dynamic=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 104, in run_full_pipeline\n    global_constraints = extract_global_specs(ir)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 235, in extract_global_specs\n    all_constraints += _extract_role_constraints(agents, task)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 85, in _extract_role_constraints\n    raw = _call_llm(system, prompt)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 42, in _call_llm\n    resp = client.chat.completions.create(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1215, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1332, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1072, in request\n    raise APIConnectionError(request=request) from err\nopenai.APIConnectionError: Connection error.\n"
+      },
+      {
+        "index": 17,
+        "stage": "pipeline",
+        "error": "Connection error.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 101, in handle_request\n    raise exc\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 78, in handle_request\n    stream = self._connect(request)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 124, in _connect\n    stream = self._network_backend.connect_tcp(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 207, in connect_tcp\n    with map_exceptions(exc_map):\n         ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1037, in request\n    response = self._send_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 440, in _send_request\n    return self._send_with_auth_retry(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 418, in _send_with_auth_retry\n    response = super()._send_request(request, stream=stream, **kwargs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 964, in _send_request\n    return self._client.send(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 916, in send\n    response = self._send_handling_auth(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 944, in _send_handling_auth\n    response = self._send_handling_redirects(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 981, in _send_handling_redirects\n    response = self._send_single_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 1016, in _send_single_request\n    response = transport.handle_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 211, in evaluate\n    pred = run_full_pipeline(ir, dynamic=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 104, in run_full_pipeline\n    global_constraints = extract_global_specs(ir)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 235, in extract_global_specs\n    all_constraints += _extract_role_constraints(agents, task)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 85, in _extract_role_constraints\n    raw = _call_llm(system, prompt)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\spec_extractor.py\", line 42, in _call_llm\n    resp = client.chat.completions.create(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1215, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1332, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1072, in request\n    raise APIConnectionError(request=request) from err\nopenai.APIConnectionError: Connection error.\n"
+      }
+    ]
+  }
+}

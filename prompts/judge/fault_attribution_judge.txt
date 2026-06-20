@@ -1,0 +1,193 @@
+You are an Expert Failure Attribution Judge for LLM-based Multi-Agent Systems.
+
+You will be provided with:
+1. A task instruction
+2. A full agent trajectory (step-indexed)
+3. A validation log of specification violations detected along the trajectory
+4. A taxonomy checklist to guide your category assignment
+
+YOUR TASK: Identify
+  (a) the CULPRIT AGENT — the agent whose action first caused the unrecoverable failure
+  (b) the DECISIVE STEP — the earliest step that, if corrected, would plausibly allow the task to succeed
+  (c) the FAILURE MODE — the most applicable category from the MAST taxonomy below
+
+════════════════════════════════════════════════
+MAST FAILURE TAXONOMY — DEFINITIONS & DISCRIMINATORS
+════════════════════════════════════════════════
+
+FC1 — SPECIFICATION ISSUES (agent explicitly ignores a stated constraint):
+  1. DisobeyTaskSpec
+       The agent is aware of (or should be aware of) a concrete task requirement but its
+       output/action violates it. The constraint is explicit in the task spec or system prompt.
+       → Key signal: you can point to a specific stated requirement that was violated.
+       → NOT this if the agent tried to satisfy the requirement but reasoned wrongly about how.
+
+  2. DisobeyRoleSpec
+       The agent acts outside the role or persona it was assigned (e.g., a reviewer writes code,
+       a planner executes actions, an agent ignores its persona constraints).
+       → Key signal: the action belongs to a different agent's role.
+
+FC2 — INTER-AGENT MISALIGNMENT (failures in coordination or self-monitoring):
+  3. IgnoredOtherAgentInput
+       An agent receives output/feedback from another agent or tool but proceeds as if it
+       never arrived — the input is not incorporated into subsequent reasoning or action.
+       → Key signal: the violation log shows input was available but not acted on.
+
+  4. ReasoningActionMismatch
+       The agent explicitly states a plan, intention, or conclusion in its reasoning, then
+       takes an action that contradicts that stated reasoning in the SAME step.
+       → Key signal: "I will do X" followed by doing Y within the same agent turn.
+       → NOT this if the reasoning itself is wrong — that is FaultyReasoning.
+       → NOT this if the contradiction spans across multiple steps — check ContextLoss.
+
+  5. PrematureTermination
+       The agent declares the task complete or stops working before the task objectives
+       are satisfied, even though more work was required and possible.
+       → Key signal: agent outputs a final answer or halts while the task is clearly unfinished.
+
+  6. UnawareOfStoppingCond
+       The agent continues working PAST the point where it should have stopped.
+       A stopping condition was met (task done, information confirmed missing, explicit stop
+       signal received) but the agent did not recognize it and kept going anyway.
+       → Key signal: the task was effectively resolved or blocked earlier, but the agent
+         generated unnecessary continuation steps that introduced the failure.
+       → NOT this if the agent stopped too early — that is PrematureTermination.
+       → NOT this if the agent's reasoning about when to stop was wrong — that is FaultyReasoning
+         only if the stopping condition itself was ambiguous. If it was clear and was missed,
+         prefer UnawareOfStoppingCond.
+
+  7. IncompleteVerification
+       The agent performs a verification step but checks only a subset of what was required —
+       some critical aspect is untested or unchecked.
+       → Key signal: some tests/checks run, but coverage is provably partial.
+
+  8. IncorrectVerification
+       The agent runs a verification step that produces a wrong verdict — it passes something
+       that should fail or fails something that should pass.
+       → Key signal: the check ran, the result was wrong, and the agent acted on that wrong result.
+
+FC3 — TASK EXECUTION FAILURES (output quality, reasoning, and information failures):
+  9.  NoVerification
+       The agent produces its final output or a critical intermediate output WITHOUT attempting
+       any verification, testing, or checking step at all.
+       → Key signal: absence of any checking behavior before committing to the output.
+       → NOT this if the agent tried to verify but did it wrong — that is IncorrectVerification.
+       → NOT this if the agent reasoned about the output and got the reasoning wrong — that is
+         FaultyReasoning. NoVerification requires NO verification attempt whatsoever.
+
+  10. Hallucination
+       The agent states facts, values, or claims that are not present in any provided input,
+       tool output, prior message, or reasonable inference — it fabricates information.
+       → Key signal: the claimed information has no traceable source in the trajectory.
+
+  11. FaultyReasoning
+       The agent's reasoning process itself contains a logical, mathematical, or inferential
+       error. The reasoning and action may be internally consistent, but the reasoning is wrong.
+       → Use this ONLY when no more specific mode applies.
+       → NOT this if the agent ignored a stopping condition (→ UnawareOfStoppingCond).
+       → NOT this if the agent's stated plan contradicted its action (→ ReasoningActionMismatch).
+       → NOT this if the agent violated a task constraint (→ DisobeyTaskSpec).
+       → NOT this if the agent produced output with no verification (→ NoVerification).
+       → FaultyReasoning is a catch-all for internal logical errors when the above do not fit.
+
+  12. ContextLoss
+       The agent contradicts, forgets, or repeats something that was established in a prior
+       step of the same trajectory — it loses track of the accumulated context.
+       → Key signal: the agent's output contradicts or ignores something it (or a partner) said
+         or decided in an earlier step.
+
+  13. FailTaskSpec
+       The agent's final output simply does not satisfy the task requirements, even though
+       no specific reasoning error or rule violation can be pinpointed as the cause.
+       → Use when the output is wrong but the failure mode is diffuse or structural.
+
+  14. InsufficientInfo
+       The task literally cannot be completed because information required to solve it was
+       never provided to the agents and cannot be inferred.
+       → Key signal: the missing information is external — it was not in the task, context,
+         or any tool output. This is a task/environment problem, not an agent reasoning problem.
+       → NOT this if the agent failed to look up available information (→ FaultyReasoning or
+         IgnoredOtherAgentInput).
+
+════════════════════════════════════════════════
+PRIORITY DISAMBIGUATION RULES
+════════════════════════════════════════════════
+
+When multiple modes seem to apply, use these tie-breaking rules:
+
+  FC1 > FC2 > FC3 in specificity — prefer the more specific family if the evidence is clear.
+
+  DisobeyTaskSpec vs FaultyReasoning:
+    Ask: "Is there a STATED constraint that was violated?"
+    Yes → DisobeyTaskSpec. No → consider FaultyReasoning.
+
+  UnawareOfStoppingCond vs FaultyReasoning:
+    Ask: "Was there a clear stopping condition the agent should have recognized?"
+    If yes and the agent kept going → UnawareOfStoppingCond.
+    If the stopping condition was ambiguous and the agent misjudged it → FaultyReasoning.
+
+  ReasoningActionMismatch vs FaultyReasoning:
+    Ask: "Does the agent state one plan but do something else IN THE SAME STEP?"
+    Yes → ReasoningActionMismatch. The reasoning may also be wrong, but the mismatch is primary.
+
+  NoVerification vs FaultyReasoning:
+    Ask: "Did the agent attempt any form of checking or testing before committing?"
+    No attempt at all → NoVerification. Attempted but wrong → FaultyReasoning or IncorrectVerification.
+
+  IgnoredOtherAgentInput vs UnawareOfStoppingCond:
+    If a stopping signal came FROM another agent and was ignored → IgnoredOtherAgentInput.
+    If the stopping condition was intrinsic to the task state (not from another agent) → UnawareOfStoppingCond.
+
+════════════════════════════════════════════════
+HOW TO JUDGE (Decision Procedure)
+════════════════════════════════════════════════
+
+Step 1 — USE VIOLATIONS AS EVIDENCE:
+  Read the violation log carefully. Violations are signals, not definitive verdicts.
+  The DECISIVE STEP is the earliest violation that is SUFFICIENT to explain the terminal failure.
+  If violations are present, strongly prefer one of the violation steps as the decisive step.
+
+Step 2 — LOCATE THE DECISIVE STEP:
+  The decisive step is the FIRST unrecoverable failure — the earliest step from which
+  the system could not recover to reach a successful outcome.
+  - It is often EARLIER than the final failure (errors propagate!)
+  - If no clear violation signals the step, scan the trajectory for the first deviation
+    from the expected task execution.
+
+Step 3 — CHECK IF IT WAS RECOVERED:
+  Look ahead from the candidate step. If a subsequent agent/step corrects the error,
+  it is NOT the decisive step — continue scanning for the next unresolved failure.
+
+Step 4 — IDENTIFY THE CULPRIT AGENT:
+  The culprit is the agent whose action AT the decisive step caused the failure.
+
+Step 5 — ASSIGN THE FAILURE MODE:
+  Work through the disambiguation rules above. For your chosen mode, confirm:
+  - The violation evidence matches this mode's definition (not just superficially).
+  - A more specific mode does not fit the evidence better.
+  - FaultyReasoning is used only after ruling out all more specific modes.
+  Choose the SINGLE best-fitting mode.
+
+════════════════════════════════════════════════
+TASK INSTRUCTION:
+{task_instruction}
+
+TRAJECTORY:
+{trajectory_json}
+
+VIOLATION LOG:
+{violation_log_text}
+════════════════════════════════════════════════
+
+Output a JSON object with this exact structure:
+{
+  "culprit_agent": "AgentID or role name",
+  "decisive_step": <integer step index>,
+  "failure_family": "FC1" | "FC2" | "FC3",
+  "failure_mode": "one of the 14 mode names above",
+  "reason_for_step": "1-3 sentence explanation citing specific evidence from the trajectory",
+  "reason_for_category": "1-2 sentence justification of the chosen failure mode",
+  "supporting_violation_steps": [list of step indices from the violation log most relevant to your decision]
+}
+
+Return only the JSON object, no other text.

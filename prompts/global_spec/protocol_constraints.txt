@@ -1,0 +1,31 @@
+You are a specification extraction expert for multi-agent systems.
+
+Given agent role descriptions and a task instruction, extract PROTOCOL constraints: rules about the ordering, sequencing, and coordination between agents.
+
+Protocol constraints capture things like:
+- "Agent A must complete before Agent B starts"
+- "The Orchestrator must always delegate, never execute directly"
+- "Verification must follow code generation"
+- "Only one agent may be active at a time"
+- Forbidden tool-call sequences: {from_tool, to_tool, reason}
+
+For each constraint:
+{
+  "assertion_name": "snake_case_unique_name",
+  "description": "One-sentence description",
+  "agent_scope": "AgentID_or_*",
+  "taxonomy_targets": ["DisobeyRoleSpec", "DisobeyTaskSpec", "IgnoredOtherAgentInput"],
+  "constraint_type": "PROTOCOL",
+  "check_hint": "2-5 sentences on what ordering/sequencing must hold",
+  "check_type": "nl_check"
+}
+
+Return a JSON array. If nothing is explicitly stated about protocol, return [].
+
+AGENTS:
+{agents_json}
+
+TASK INSTRUCTION:
+{task_instruction}
+
+Return only the JSON array, no other text.

@@ -1,0 +1,74 @@
+You are a specification constraint generator for multi-agent system fault localization.
+
+You are given:
+1. A task instruction
+2. Global constraints already established (for context)
+3. The trajectory UP TO AND INCLUDING the current step (step index {current_step_index})
+4. The current step content
+
+Your job: Generate NEW dynamic constraints that should hold AT OR AFTER this step, based on what has been observed in the trajectory so far.
+
+Dynamic constraints are trajectory-specific invariants. Generate a MIX across all three failure families:
+
+FC3 — Reasoning/output consistency (most common, but do not over-generate):
+- "The count X stated by the agent must match the value Y from the tool response at step N"
+- "The file path mentioned at step K must be used consistently in future steps"
+- "Since the agent called tool T with argument A, the next write action must use A as the identifier"
+- "The agent committed to plan P at step K; it must follow P unless explicitly revising it"
+
+FC2 — Inter-agent coordination (actively look for these):
+- "Agent A received output O from agent B at step K; agent A must reference or act on O before proceeding"
+- "The Planner stated intent X at step K; the action delegated to the sub-agent must be consistent with X"
+- "Agent A has failed N times on the same approach; it must revise its strategy rather than retry identically"
+- "A stopping condition was reached at step K (e.g. repeated failure, task completion signal); the agent must not continue past it"
+
+FC1 — Task/role compliance (check against the task instruction):
+- "The task requires outcome O; the agent's current approach must target O specifically, not a related but different outcome"
+- "Agent A's role is R; it must not perform actions that belong to agent B's role"
+- "The original task constraint C was established; the agent must not violate C even if a sub-goal suggests otherwise"
+
+STRICT RULES:
+- Only generate constraints grounded in OBSERVED facts in the trajectory prefix
+- Maximum {max_constraints} constraints per step
+- Actively look for FC2 coordination signals: did an agent ignore another's output? Is there a reasoning-action mismatch? Is the agent continuing past a clear stopping point?
+- Actively look for FC1 signals: is the agent's action consistent with the original task instruction and its assigned role?
+- Focus on constraints that are CHECKABLE from the trace text
+- Do NOT repeat constraints already in the global set
+
+VALID MAST TAXONOMY MODES — use ONLY these in taxonomy_targets:
+  FC1: DisobeyTaskSpec, DisobeyRoleSpec
+  FC2: IgnoredOtherAgentInput, ReasoningActionMismatch, PrematureTermination,
+       UnawareOfStoppingCond, IncompleteVerification, IncorrectVerification
+  FC3: NoVerification, Hallucination, FaultyReasoning, ContextLoss, FailTaskSpec, InsufficientInfo
+
+For each constraint, output this schema:
+{
+  "assertion_name": "snake_case_unique_name",
+  "description": "One-sentence description of what must hold",
+  "agent_scope": "AgentID_or_*",
+  "taxonomy_targets": ["<one or two relevant MAST modes from the list above>"],
+  "constraint_type": "RELATIONAL_POST | TEMPORAL | PROTOCOL | CAPABILITY | ANY",
+  "originating_step": {current_step_index},
+  "check_hint": "2-5 sentences: what was established at step {current_step_index} and what must hold from now on",
+  "check_type": "nl_check"
+}
+
+constraint_type guidance:
+- TEMPORAL: something established at step K must still hold at step K+N (e.g. plan commitments, stopping conditions)
+- RELATIONAL_POST: the output/state after this step must satisfy a relation to a prior observation
+- PROTOCOL: an inter-agent coordination rule (acknowledgment, handoff, ordering between agents)
+- CAPABILITY: an agent must/must not perform a class of action based on its role
+- ANY: use only if no other type fits
+
+Return a JSON array of NEW constraints. If nothing new can be established, return [].
+
+TASK INSTRUCTION:
+{task_instruction}
+
+TRAJECTORY UP TO STEP {current_step_index}:
+{trajectory_prefix_json}
+
+GLOBAL CONSTRAINTS ALREADY ESTABLISHED (do not duplicate):
+{global_constraint_names_json}
+
+Return only the JSON array, no other text.

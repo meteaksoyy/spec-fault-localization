@@ -1,0 +1,683 @@
+{
+  "full": {
+    "mode": "full",
+    "metrics": {
+      "n_traces": 18,
+      "agent_accuracy": NaN,
+      "step_accuracy": NaN,
+      "avg_step_distance": NaN,
+      "failure_mode_accuracy": 0.05555555555555555,
+      "failure_family_accuracy": 0.2222222222222222,
+      "step_accuracy_at_1": 0.0,
+      "step_accuracy_at_3": 0.0,
+      "step_accuracy_at_5": 0.0,
+      "skipped": 1,
+      "errors": 1
+    },
+    "predictions": [
+      {
+        "culprit_agent": "Supervisor",
+        "decisive_step": 5,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 5, the Supervisor agent incorrectly attempts to retrieve the Spotify access token by accessing account credentials, mistaking the password for the access token. This misunderstanding leads to subsequent failures in accessing the Spotify API.",
+        "reason_for_category": "The failure mode 'FaultyReasoning' is applicable as the agent's logical error in interpreting the account credentials as an access token directly caused the task to fail.",
+        "supporting_violation_steps": [
+          5,
+          6,
+          8,
+          11
+        ],
+        "_trajectory_id": "appworld_0"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 5,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 5, the Planner incorrectly identifies the main issue as a lack of handling for nested compound models without sufficient evidence, leading to a series of incorrect assumptions and actions.",
+        "reason_for_category": "The Planner's reasoning was flawed, as it made incorrect assumptions about the handling of nested compound models, which propagated through subsequent steps.",
+        "supporting_violation_steps": [
+          5,
+          10,
+          11,
+          12,
+          13
+        ],
+        "_trajectory_id": "hyperagent_1"
+      },
+      {
+        "culprit_agent": "mathproxyagent",
+        "decisive_step": 2,
+        "failure_family": "FC3",
+        "failure_mode": "InsufficientInfo",
+        "reason_for_step": "At step 2, mathproxyagent failed to recognize that the problem could not be solved due to missing information about the ribbon length or bow size, as evidenced by its repeated instruction to continue solving without querying for necessary data.",
+        "reason_for_category": "The failure mode 'InsufficientInfo' is appropriate because the task could not be completed due to missing critical information that was not provided to the agents.",
+        "supporting_violation_steps": [
+          2,
+          3,
+          5,
+          6,
+          10
+        ],
+        "_trajectory_id": "ag2_2"
+      },
+      {
+        "culprit_agent": "unknown",
+        "decisive_step": 0,
+        "failure_family": "FC3",
+        "failure_mode": "InsufficientInfo",
+        "reason_for_step": "The task instruction and trajectory indicate the need for a Sudoku solver/creator, but the trajectory only includes preprocessing information without any further steps or actions taken by agents.",
+        "reason_for_category": "The failure mode 'InsufficientInfo' is chosen because the task cannot be completed due to missing information or actions not provided in the trajectory.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "chatdev_3"
+      },
+      {
+        "culprit_agent": "Alice(SimpleCoder)",
+        "decisive_step": 0,
+        "failure_family": "FC1",
+        "failure_mode": "DisobeyTaskSpec",
+        "reason_for_step": "Alice's failure to complete her task before Bob started testing led to a protocol violation, causing a cascade of misaligned actions that could not be recovered from.",
+        "reason_for_category": "Alice violated the task specification by not completing her coding task before Bob began testing, as evidenced by the protocol violation.",
+        "supporting_violation_steps": [
+          0
+        ],
+        "_trajectory_id": "metagpt_4"
+      },
+      {
+        "culprit_agent": "Supervisor",
+        "decisive_step": 8,
+        "failure_family": "FC2",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 8, the Supervisor agent incorrectly sends the Spotify password instead of the required access token, leading to a failure in authentication. This action is based on a misunderstanding of the authentication process.",
+        "reason_for_category": "The failure mode is FaultyReasoning because the agent's action was based on incorrect reasoning about the authentication requirements.",
+        "supporting_violation_steps": [
+          8,
+          10,
+          12,
+          14
+        ],
+        "_trajectory_id": "appworld_5"
+      },
+      {
+        "culprit_agent": "Executor",
+        "decisive_step": 6,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Executor incorrectly identified the issue as a missing installation of the `lightgbm` library and a faulty `scikit-learn` installation, which was not the root cause of the problem. This misinterpretation led to an incorrect course of action.",
+        "reason_for_category": "The Executor made a logical error in reasoning about the cause of the failure, which aligns with the FaultyReasoning mode.",
+        "supporting_violation_steps": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "_trajectory_id": "hyperagent_6"
+      },
+      {
+        "culprit_agent": "mathproxyagent",
+        "decisive_step": 2,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 2, the mathproxyagent incorrectly calculated the number of students as 29.0, which indicates a logical error in the reasoning process. This step is decisive because it directly led to the incorrect final answer.",
+        "reason_for_category": "The failure mode 'FaultyReasoning' is justified as the agent made a computational error in determining the number of students, which is a core task requirement.",
+        "supporting_violation_steps": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "_trajectory_id": "ag2_7"
+      },
+      {
+        "culprit_agent": "unknown",
+        "decisive_step": 0,
+        "failure_family": "FC3",
+        "failure_mode": "InsufficientInfo",
+        "reason_for_step": "The task instruction and trajectory only include the preprocessing step without any further actions or agent interactions, indicating a lack of information to proceed with the task.",
+        "reason_for_category": "The task cannot be completed due to missing information, as no further steps or agent actions are provided beyond the initial setup.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "chatdev_8"
+      },
+      {
+        "culprit_agent": "Bob(SimpleTester)",
+        "decisive_step": 1,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 1, Bob(SimpleTester) incorrectly asserts that the income method should return 1000, which is not defined in the BudgetTracker class, leading to a failure in the test case.",
+        "reason_for_category": "The failure mode 'FaultyReasoning' is chosen because the agent made a logical error in reasoning about the expected behavior of the income method.",
+        "supporting_violation_steps": [
+          2
+        ],
+        "_trajectory_id": "metagpt_9"
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "",
+        "failure_family": "",
+        "_trajectory_id": "hyperagent_10"
+      },
+      {
+        "culprit_agent": "send_message API",
+        "decisive_step": 2,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The decisive step is step 2 where the send_message API failed to find the agent for the note_taking_app, leading to a cascade of errors. This step was not recovered from, as subsequent steps continued to operate under the incorrect assumption that the app name was correct.",
+        "reason_for_category": "The failure mode is FaultyReasoning because the agent incorrectly assumed the existence of the note_taking_app agent, leading to a failure in executing the task.",
+        "supporting_violation_steps": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "_trajectory_id": "appworld_11"
+      },
+      {
+        "culprit_agent": "mathproxyagent",
+        "decisive_step": 4,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 4, the mathproxyagent failed to execute the code correctly due to a NameError, indicating a critical error in reasoning about variable definitions. This error prevented the calculation of the remaining days, leading to an incorrect final output.",
+        "reason_for_category": "The failure mode 'FaultyReasoning' is appropriate as the agent made a logical error in the code execution, resulting in a NameError.",
+        "supporting_violation_steps": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "_trajectory_id": "ag2_12"
+      },
+      {
+        "culprit_agent": "unknown",
+        "decisive_step": 0,
+        "failure_family": "FC3",
+        "failure_mode": "InsufficientInfo",
+        "reason_for_step": "The task instruction requires implementing a crossword puzzle, but the trajectory only includes preprocessing information without any further steps or actions taken by agents. This indicates a lack of information necessary to proceed with the task.",
+        "reason_for_category": "The failure mode 'InsufficientInfo' is applicable as the task cannot be completed due to missing steps or actions in the trajectory.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "chatdev_13"
+      },
+      {
+        "culprit_agent": "Bob(SimpleTester)",
+        "decisive_step": 1,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 1, Bob(SimpleTester) incorrectly asserts that the Fibonacci sequence for a limit of 1 should return [0], which contradicts the expected output of [0, 1]. This faulty reasoning leads to incorrect test cases that propagate through the system.",
+        "reason_for_category": "The failure mode 'FaultyReasoning' is chosen because Bob's incorrect assertion directly reflects a logical error in understanding the Fibonacci sequence requirements.",
+        "supporting_violation_steps": [
+          1,
+          3
+        ],
+        "_trajectory_id": "metagpt_14"
+      },
+      {
+        "culprit_agent": "unknown",
+        "decisive_step": 0,
+        "failure_family": "FC3",
+        "failure_mode": "InsufficientInfo",
+        "reason_for_step": "The task prompt requires answering a question about high school government and politics, but the trajectory does not provide the complete question or any answer options, making it impossible to proceed.",
+        "reason_for_category": "The task cannot be completed due to missing information not provided to agents.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "chatdev_15"
+      },
+      {
+        "culprit_agent": "unknown",
+        "decisive_step": 0,
+        "failure_family": "FC3",
+        "failure_mode": "InsufficientInfo",
+        "reason_for_step": "The task instruction was to test writing to a log file, but the trajectory only shows an initial setup without any further steps or actions taken by the agent to complete the task.",
+        "reason_for_category": "The task cannot be completed due to missing information or steps not provided in the trajectory.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "metagpt_16"
+      },
+      {
+        "culprit_agent": "unknown",
+        "decisive_step": 0,
+        "failure_family": "FC3",
+        "failure_mode": "InsufficientInfo",
+        "reason_for_step": "The trajectory only contains the initial setup step with no further actions or outputs, indicating a lack of information to proceed with the task.",
+        "reason_for_category": "The task cannot be completed due to missing information not provided to agents, fitting the 'InsufficientInfo' mode.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "gaia_17"
+      }
+    ],
+    "ground_truths": [
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.2 Step repetition",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.4 Conversation reset",
+            "mode": "ContextLoss",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.5 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.6 Disobey role specification",
+            "mode": "DisobeyRoleSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.4 Waiting for known information",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "4.3 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "4.2 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.2 Step repetition",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.4 Conversation reset",
+            "mode": "ContextLoss",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.5 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.6 Disobey role specification",
+            "mode": "DisobeyRoleSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.4 Waiting for known information",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "4.3 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "4.2 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.6 Backtracking interruption",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.6 Backtracking interruption",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Poor task constraint compliance",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.3 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Poor task constraint compliance",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.3 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Poor task constraint compliance",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.3 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "InsufficientInfo",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.2 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "InsufficientInfo",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "2.2 Fail to elicit clarification",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "3.2 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Disobey Task Specification",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.2 No or Incomplete Verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Incorrect Verification",
+            "mode": "IncorrectVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Disobey Task Specification",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.2 No or Incomplete Verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Incorrect Verification",
+            "mode": "IncorrectVerification",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1 Disobey Task Specification",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.2 No or Incomplete Verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Incorrect Verification",
+            "mode": "IncorrectVerification",
+            "family": "FC2"
+          }
+        ]
+      }
+    ],
+    "errors": [
+      {
+        "index": 10,
+        "stage": "pipeline",
+        "error": "Connection error.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 101, in handle_request\n    raise exc\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 78, in handle_request\n    stream = self._connect(request)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 124, in _connect\n    stream = self._network_backend.connect_tcp(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 207, in connect_tcp\n    with map_exceptions(exc_map):\n         ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1037, in request\n    response = self._send_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 440, in _send_request\n    return self._send_with_auth_retry(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_client.py\", line 418, in _send_with_auth_retry\n    response = super()._send_request(request, stream=stream, **kwargs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 964, in _send_request\n    return self._client.send(request, stream=stream, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 916, in send\n    response = self._send_handling_auth(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 944, in _send_handling_auth\n    response = self._send_handling_redirects(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 981, in _send_handling_redirects\n    response = self._send_single_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_client.py\", line 1016, in _send_single_request\n    response = transport.handle_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ConnectError: [Errno 11001] getaddrinfo failed\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 181, in evaluate\n    pred = run_full_pipeline(ir, dynamic=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\evaluation\\run_evaluation.py\", line 108, in run_full_pipeline\n    validation_log = build_validation_log(ir, global_constraints, verbose=False)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\validation_log.py\", line 85, in build_validation_log\n    results = evaluate_all_at_step(c_k, trajectory, k)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\constraint_evaluator.py\", line 271, in evaluate_all_at_step\n    verdict, evidence = evaluate_constraint(c, trajectory, step_index)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\constraint_evaluator.py\", line 248, in evaluate_constraint\n    verdict, evidence = _run_nl_check(constraint, trajectory, step_index)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\COURSES\\ResearchSpecProject\\spec_fault_localization\\src\\constraint_evaluator.py\", line 194, in _run_nl_check\n    resp = client.chat.completions.create(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1215, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1332, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Mete\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\_base_client.py\", line 1072, in request\n    raise APIConnectionError(request=request) from err\nopenai.APIConnectionError: Connection error.\n"
+      }
+    ]
+  }
+}

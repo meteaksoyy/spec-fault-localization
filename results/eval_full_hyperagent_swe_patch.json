@@ -1,0 +1,13 @@
+{
+  "full": {
+    "mode": "full",
+    "metrics": {
+      "skipped": 0,
+      "errors": 0
+    },
+    "predictions": [],
+    "ground_truths": [],
+    "errors": [],
+    "constraint_logs": []
+  }
+}

@@ -1,0 +1,500 @@
+{
+  "baseline": {
+    "mode": "baseline",
+    "metrics": {
+      "n_traces": 14,
+      "agent_accuracy": NaN,
+      "step_accuracy": NaN,
+      "avg_step_distance": NaN,
+      "failure_mode_accuracy": 0.0,
+      "failure_mode_accuracy_lenient": 0.0,
+      "failure_family_accuracy": 0.14285714285714285,
+      "failure_family_accuracy_lenient": 0.42857142857142855,
+      "step_accuracy_at_1": 0.0,
+      "step_accuracy_at_3": 0.0,
+      "step_accuracy_at_5": 0.0,
+      "skipped": 16,
+      "errors": 0
+    },
+    "predictions": [
+      {
+        "culprit_agent": "Navigator",
+        "decisive_step": 8,
+        "failure_family": "FC3",
+        "failure_mode": "ContextLoss",
+        "reason_for_step": "At step 8, the Navigator provided an implementation for FastAPI instead of Flask, which is unrelated to the task. This indicates a loss of context regarding the framework being used.",
+        "reason_for_category": "The error stems from a misunderstanding or loss of context about the specific framework (Flask) being used, leading to irrelevant information being provided.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_3"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 3,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Planner identified the change in style name but failed to consider the possibility of a backward compatibility solution immediately. This led to unnecessary steps before reaching the correct solution.",
+        "reason_for_category": "The Planner's reasoning was faulty as it did not initially consider a backward compatibility approach, which would have resolved the issue more efficiently.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_5"
+      },
+      {
+        "culprit_agent": "Navigator",
+        "decisive_step": 6,
+        "failure_family": "FC2",
+        "failure_mode": "ReasoningActionMismatch",
+        "reason_for_step": "Navigator incorrectly identified the location of the FilePathField model field as being in django/forms/fields.py instead of django/db/models/fields.py. This misled the Planner and caused confusion about the implementation location.",
+        "reason_for_category": "The error was due to a mismatch between the reasoning and the action taken by the Navigator, leading to incorrect information being provided.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_6"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 5,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Planner incorrectly assumed that modifying the transform method without first verifying the behavior with a test case would resolve the issue. This led to an incorrect patch being applied.",
+        "reason_for_category": "The error was due to a reasoning flaw where the Planner did not follow the correct sequence of verifying the issue with a test before applying a fix.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_7"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 5,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Planner incorrectly identifies the need to modify the pytest code to handle a bare 'raise' statement in the __repr__ method, which is not the root cause of the issue. This leads to an unnecessary modification of the pytest code.",
+        "reason_for_category": "The Planner's reasoning was faulty as it misdiagnosed the problem and proposed an incorrect solution.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_8"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 5,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Planner incorrectly assumed that adding a `_print_sinc` method to handle the `sinc` function in the `CCodePrinter` class would resolve the issue. This was based on a misunderstanding of the `ccode()` function's capabilities.",
+        "reason_for_category": "The failure was due to incorrect reasoning about how to handle the `sinc` function within the existing framework of the `ccode()` function.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_10"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 9,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 9, the Planner incorrectly concludes that the issue is resolved based on existing code, without verifying through testing. This leads to a misunderstanding of the task's requirements.",
+        "reason_for_category": "The Planner's reasoning was flawed as it failed to ensure the task's success through proper verification.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_11"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 13,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 13, the Planner incorrectly concludes that the implementation is treating cycles as if they should always be disjoint, without verifying the actual behavior of the code. This leads to a misunderstanding of the problem and incorrect subsequent actions.",
+        "reason_for_category": "The failure is due to incorrect reasoning about how the code handles non-disjoint cycles, leading to an unresolved issue.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_12"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 5,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Planner incorrectly assumes that modifying the PairGrid class is necessary to handle MultiIndex DataFrames, leading to unnecessary changes.",
+        "reason_for_category": "The Planner's reasoning was flawed as it did not consider simpler solutions like flattening the DataFrame columns before plotting.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_15"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 7,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Planner incorrectly identifies the need to modify the `check_array` function to handle string labels, which is not necessary for resolving the issue. The problem lies in the input type handling, not in the function's logic.",
+        "reason_for_category": "The Planner's reasoning deviates from the correct approach, leading to unnecessary modifications and failing to address the actual issue.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_17"
+      },
+      {
+        "culprit_agent": "Executor",
+        "decisive_step": 10,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 10, the Executor incorrectly states that the `from_file()` method has not been updated to accept the `mode` parameter, despite previous steps indicating that the modification was made. This misunderstanding leads to unnecessary additional steps.",
+        "reason_for_category": "The error stems from a misunderstanding of the current state of the code, which is a reasoning error rather than a procedural or communication error.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_18"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 3,
+        "failure_family": "FC2",
+        "failure_mode": "ReasoningActionMismatch",
+        "reason_for_step": "At step 3, the Planner identifies the issue with the `resolve_redirects` method but incorrectly assumes that moving the `req.copy()` line outside the loop will fix the problem. This reasoning does not align with the necessary action to preserve the HTTP method changes.",
+        "reason_for_category": "The failure mode is ReasoningActionMismatch because the Planner's reasoning about the solution does not match the correct action needed to resolve the issue.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_19"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 7,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Planner incorrectly identifies the issue as being related to how the hue parameter is processed when passed directly to the map function, rather than recognizing that the hue parameter should be specified during PairGrid initialization.",
+        "reason_for_category": "The error stems from a misunderstanding of the correct usage of the hue parameter in the PairGrid context, leading to an incorrect diagnosis and solution proposal.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_21"
+      },
+      {
+        "culprit_agent": "Planner",
+        "decisive_step": 3,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Planner incorrectly concluded that the issue was not reproducing as described, despite the Executor's output showing the problem. This led to a misdirection in the investigation.",
+        "reason_for_category": "The Planner's reasoning did not align with the evidence provided, leading to an incorrect assessment of the situation.",
+        "supporting_violation_steps": [],
+        "_trajectory_id": "hyperagent_27"
+      }
+    ],
+    "ground_truths": [
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "InsufficientInfo",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "2.2",
+            "mode": "InsufficientInfo",
+            "family": "FC3",
+            "votes": 1
+          },
+          {
+            "raw": "2.3",
+            "mode": "FailTaskSpec",
+            "family": "FC3",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1",
+            "votes": 1
+          },
+          {
+            "raw": "2.6",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "3.3",
+            "mode": "IncorrectVerification",
+            "family": "FC2",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.3",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "3.3",
+            "mode": "IncorrectVerification",
+            "family": "FC2",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1",
+            "votes": 1
+          },
+          {
+            "raw": "1.3",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "1.5",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "2.2",
+            "mode": "InsufficientInfo",
+            "family": "FC3",
+            "votes": 1
+          },
+          {
+            "raw": "2.3",
+            "mode": "FailTaskSpec",
+            "family": "FC3",
+            "votes": 1
+          },
+          {
+            "raw": "2.4",
+            "mode": "InsufficientInfo",
+            "family": "FC3",
+            "votes": 1
+          },
+          {
+            "raw": "2.6",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "3.1",
+            "mode": "PrematureTermination",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "3.3",
+            "mode": "IncorrectVerification",
+            "family": "FC2",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.3",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "1.4",
+            "mode": "ContextLoss",
+            "family": "FC3",
+            "votes": 1
+          },
+          {
+            "raw": "1.5",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "2.1",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "3.3",
+            "mode": "IncorrectVerification",
+            "family": "FC2",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "IncorrectVerification",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "3.3",
+            "mode": "IncorrectVerification",
+            "family": "FC2",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1",
+            "votes": 1
+          },
+          {
+            "raw": "3.2",
+            "mode": "NoVerification",
+            "family": "FC3",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.3",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "3.2",
+            "mode": "NoVerification",
+            "family": "FC3",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1",
+            "votes": 1
+          },
+          {
+            "raw": "2.6",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "3.3",
+            "mode": "IncorrectVerification",
+            "family": "FC2",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.3",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "3.2",
+            "mode": "NoVerification",
+            "family": "FC3",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.3",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2",
+            "votes": 1
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "DisobeyTaskSpec",
+        "failure_family": "FC1",
+        "all_failure_modes": [
+          {
+            "raw": "1.1",
+            "mode": "DisobeyTaskSpec",
+            "family": "FC1",
+            "votes": 1
+          },
+          {
+            "raw": "2.6",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2",
+            "votes": 1
+          },
+          {
+            "raw": "3.3",
+            "mode": "IncorrectVerification",
+            "family": "FC2",
+            "votes": 1
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "constraint_logs": []
+  }
+}

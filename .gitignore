@@ -1,0 +1,17 @@
+# Environment / secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Raw dataset files (download with: python src/data/download_mast.py)
+data/raw/
+
+# IDE
+.vscode/
+.idea/

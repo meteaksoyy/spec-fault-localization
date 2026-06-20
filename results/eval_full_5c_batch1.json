@@ -1,0 +1,401 @@
+{
+  "full": {
+    "mode": "full",
+    "metrics": {
+      "n_traces": 10,
+      "agent_accuracy": NaN,
+      "step_accuracy": NaN,
+      "avg_step_distance": NaN,
+      "failure_mode_accuracy": 0.0,
+      "failure_mode_accuracy_lenient": 0.1,
+      "failure_family_accuracy": 0.2,
+      "failure_family_accuracy_lenient": 0.4,
+      "step_accuracy_at_1": 0.0,
+      "step_accuracy_at_3": 0.0,
+      "step_accuracy_at_5": 0.0,
+      "skipped": 0,
+      "errors": 0
+    },
+    "predictions": [
+      {
+        "culprit_agent": "Supervisor",
+        "decisive_step": 11,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 11, the Supervisor agent incorrectly attempted to use the Spotify password as an access token, despite previous indications that this was incorrect. This action led to an execution failure, marking the task as unrecoverable.",
+        "reason_for_category": "The failure was due to a logical error in reasoning about how to obtain and use the access token, rather than a violation of a specific task or role constraint.",
+        "supporting_violation_steps": [
+          11,
+          25,
+          27
+        ],
+        "_trajectory_id": "appworld_0"
+      },
+      {
+        "culprit_agent": "Navigator",
+        "decisive_step": 4,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 4, the Navigator made an educated guess about the logic of the `_separable` function without having the actual implementation, leading to incorrect assumptions about its behavior.",
+        "reason_for_category": "The Navigator's reasoning about the `_separable` function was incorrect due to a lack of concrete information, leading to a misunderstanding of the function's logic.",
+        "supporting_violation_steps": [
+          4,
+          5,
+          6,
+          8
+        ],
+        "_trajectory_id": "hyperagent_1"
+      },
+      {
+        "culprit_agent": "mathproxyagent",
+        "decisive_step": 2,
+        "failure_family": "FC3",
+        "failure_mode": "InsufficientInfo",
+        "reason_for_step": "At step 2, the mathproxyagent failed to recognize that the problem could not be solved due to missing information about the total length of ribbon or the length per bow, which was necessary to proceed.",
+        "reason_for_category": "The problem cannot be solved because the required information was not provided in the task, making it an InsufficientInfo failure.",
+        "supporting_violation_steps": [
+          2,
+          4,
+          8
+        ],
+        "_trajectory_id": "ag2_2"
+      },
+      {
+        "culprit_agent": "System",
+        "decisive_step": 1,
+        "failure_family": "FC1",
+        "failure_mode": "DisobeyTaskSpec",
+        "reason_for_step": "At step 1, the System failed to ensure that the Chief Executive Officer provided final approval before the project was considered complete, violating a specific task requirement.",
+        "reason_for_category": "The failure mode is DisobeyTaskSpec because a stated constraint requiring CEO approval was explicitly ignored.",
+        "supporting_violation_steps": [
+          1,
+          3
+        ],
+        "_trajectory_id": "chatdev_3"
+      },
+      {
+        "culprit_agent": "Alice(SimpleCoder)",
+        "decisive_step": 0,
+        "failure_family": "FC3",
+        "failure_mode": "ContextLoss",
+        "reason_for_step": "At step 0, Alice's code for detecting palindromes does not handle file path usage consistently, leading to a mismatch with the test cases that expect specific file paths. This inconsistency is the earliest point of failure that affects subsequent steps.",
+        "reason_for_category": "The failure mode is ContextLoss because Alice's implementation does not maintain consistency with the expected file paths, leading to a loss of context between the code and the test cases.",
+        "supporting_violation_steps": [
+          0
+        ],
+        "_trajectory_id": "metagpt_4"
+      },
+      {
+        "culprit_agent": "Supervisor",
+        "decisive_step": 8,
+        "failure_family": "FC2",
+        "failure_mode": "IgnoredOtherAgentInput",
+        "reason_for_step": "At step 8, the Supervisor agent sends the Spotify password instead of the access token, despite the Spotify agent's response at step 10 indicating the need for an access token. This misstep led to a failure in authenticating with the Spotify API.",
+        "reason_for_category": "The failure mode is IgnoredOtherAgentInput because the Supervisor agent did not incorporate the Spotify agent's feedback about needing an access token instead of a password.",
+        "supporting_violation_steps": [
+          8,
+          10,
+          11
+        ],
+        "_trajectory_id": "appworld_5"
+      },
+      {
+        "culprit_agent": "Executor",
+        "decisive_step": 6,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "The Executor failed to ensure that the necessary library 'lightgbm' was installed before attempting to run the test, leading to an error that halted progress.",
+        "reason_for_category": "The Executor's reasoning was flawed as it did not account for the missing library, which was a prerequisite for the task.",
+        "supporting_violation_steps": [
+          5,
+          6,
+          7
+        ],
+        "_trajectory_id": "hyperagent_6"
+      },
+      {
+        "culprit_agent": "mathproxyagent",
+        "decisive_step": 2,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 2, the mathproxyagent incorrectly calculated the number of students as 29.0, which indicates a logical error in the reasoning process regarding the card distribution.",
+        "reason_for_category": "The failure mode is FaultyReasoning because the agent's calculation logic was flawed, leading to an incorrect result.",
+        "supporting_violation_steps": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "_trajectory_id": "ag2_7"
+      },
+      {
+        "culprit_agent": "System",
+        "decisive_step": 1,
+        "failure_family": "FC1",
+        "failure_mode": "DisobeyTaskSpec",
+        "reason_for_step": "At step 1, the System assigned the role of Chief Product Officer without ensuring the required CTO approval before deployment, violating the explicit protocol constraint.",
+        "reason_for_category": "The failure mode is DisobeyTaskSpec because the System violated a clearly stated protocol constraint regarding role assignment and task execution.",
+        "supporting_violation_steps": [
+          1,
+          2
+        ],
+        "_trajectory_id": "chatdev_8"
+      },
+      {
+        "culprit_agent": "Bob(SimpleTester)",
+        "decisive_step": 3,
+        "failure_family": "FC3",
+        "failure_mode": "FaultyReasoning",
+        "reason_for_step": "At step 3, Bob(SimpleTester) introduced tests that allowed negative values for income, expenses, and savings, which violates the task requirement for non-negative financial entries.",
+        "reason_for_category": "The failure mode is FaultyReasoning because Bob's tests incorrectly assumed that negative values could be valid, which is a logical error in understanding the task requirements.",
+        "supporting_violation_steps": [
+          3,
+          5,
+          6,
+          7
+        ],
+        "_trajectory_id": "metagpt_9"
+      }
+    ],
+    "ground_truths": [
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "UnawareOfStoppingCond",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "3.3 Ignoring suggestions from agents",
+            "mode": "IgnoredOtherAgentInput",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.2 Step repetition",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.4 Conversation reset",
+            "mode": "ContextLoss",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.5 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.6 Disobey role specification",
+            "mode": "DisobeyRoleSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.4 Waiting for known information",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "4.3 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "4.2 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.5 Unaware of stopping conditions",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.2 Step repetition",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          },
+          {
+            "raw": "2.4 Conversation reset",
+            "mode": "ContextLoss",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.5 Derailment from task",
+            "mode": "FailTaskSpec",
+            "family": "FC3"
+          },
+          {
+            "raw": "2.6 Disobey role specification",
+            "mode": "DisobeyRoleSpec",
+            "family": "FC1"
+          },
+          {
+            "raw": "3.4 Waiting for known information",
+            "mode": "InsufficientInfo",
+            "family": "FC3"
+          },
+          {
+            "raw": "4.3 Lack of critical verification",
+            "mode": "IncompleteVerification",
+            "family": "FC2"
+          },
+          {
+            "raw": "4.2 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "NoVerification",
+        "failure_family": "FC3",
+        "all_failure_modes": [
+          {
+            "raw": "3.3 Lack of result verification",
+            "mode": "NoVerification",
+            "family": "FC3"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.6 Backtracking interruption",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          }
+        ]
+      },
+      {
+        "culprit_agent": null,
+        "decisive_step": null,
+        "failure_mode": "ReasoningActionMismatch",
+        "failure_family": "FC2",
+        "all_failure_modes": [
+          {
+            "raw": "1.2 Inconsistency between reasoning and action",
+            "mode": "ReasoningActionMismatch",
+            "family": "FC2"
+          },
+          {
+            "raw": "1.6 Backtracking interruption",
+            "mode": "UnawareOfStoppingCond",
+            "family": "FC2"
+          }
+        ]
+      }
+    ],
+    "errors": []
+  }
+}

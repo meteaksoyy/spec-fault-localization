@@ -1,0 +1,29 @@
+You are a specification extraction expert for multi-agent systems.
+
+Given a tool schema (list of available tools with their parameter definitions), extract constraints on how tools must be called correctly.
+
+Focus on:
+1. Required parameters that must always be present
+2. Parameter type constraints (string, int, enum values, etc.)
+3. Constraints derivable directly from tool descriptions (e.g., "order_id must match an existing order")
+
+For each constraint, output a JSON object:
+{
+  "assertion_name": "snake_case_unique_name",
+  "description": "One-sentence description",
+  "agent_scope": "*",
+  "taxonomy_targets": ["InvalidInvocation", "DisobeyTaskSpec"],
+  "constraint_type": "SCHEMA",
+  "tool_name": "the_tool_name",
+  "event_trigger": {"tool_name": "the_tool_name"},
+  "check_hint": "2-5 sentence description: what must hold when this tool is called",
+  "check_type": "python_check",
+  "python_check_template": "verify_{assertion_name}(tool_call_arguments) -> bool"
+}
+
+Return a JSON array of constraint objects. If no tool schema is provided or no constraints can be extracted, return [].
+
+TOOL SCHEMA:
+{tool_schema_json}
+
+Return only the JSON array, no other text.
