@@ -1,9 +1,13 @@
 # Specification-Based Fault Localization for LLM-Based Multi-Agent Systems
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20767030.svg)](https://doi.org/10.5281/zenodo.20767030)
+
 Replication package for the CSE3000 Research Project thesis.
 
 > **Mete Aksoy** — EEMCS, Delft University of Technology, 2026  
 > Supervisors: B. Kulahcioglu Ozkan, A. Panichella, Z. Seyedghorban
+
+📄 **[Read the paper](./RP_SPEC_FAULT_LOCALIZATION-FINAL.pdf)**
 
 ---
 
